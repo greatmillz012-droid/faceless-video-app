@@ -2,7 +2,10 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    SECRET_KEY: str
+    # Falls back to a development-only default so the app can start locally
+    # without a .env file. Railway (and any production deployment) should
+    # always override this via an environment variable with a secure value.
+    SECRET_KEY: str = "dev-secret-key-change-me"
     DATABASE_URL: str = "sqlite:///./facelessapp.db"
     REDIS_URL: str = "redis://localhost:6379/0"
     STORAGE_PATH: str = "/app/storage/videos"
