@@ -1,0 +1,8 @@
+#! 0-faceless-video-app-namespace.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: faceless-video-app
+    labels:
+        com.docker.compose.project: faceless-video-app

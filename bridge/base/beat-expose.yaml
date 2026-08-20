@@ -1,0 +1,18 @@
+#! beat-expose.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Service
+metadata:
+    name: beat
+    namespace: faceless-video-app
+    labels:
+        com.docker.compose.project: faceless-video-app
+        com.docker.compose.service: beat
+spec:
+    selector:
+        com.docker.compose.project: faceless-video-app
+        com.docker.compose.service: beat
+    ports:
+        - name: beat-8000
+          port: 8000
+          targetPort: beat-8000

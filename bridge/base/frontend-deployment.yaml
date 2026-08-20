@@ -1,0 +1,44 @@
+#! frontend-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: frontend
+    namespace: faceless-video-app
+    labels:
+        com.docker.compose.project: faceless-video-app
+        com.docker.compose.service: frontend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: faceless-video-app
+            com.docker.compose.service: frontend
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: faceless-video-app
+                com.docker.compose.service: frontend
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: frontend
+                  image: faceless-video-app-frontend
+                  imagePullPolicy: IfNotPresent
+                  args:
+                    - npm
+                    - run
+                    - dev
+                    - --
+                    - --hostname
+                    - 0.0.0.0
+                    - --port
+                    - 3000
+                  env:
+                    - name: NEXT_PUBLIC_API_URL
+                      value: "http://localhost:8000"
+                  ports:
+                    - name: frontend-3000
+                      containerPort: 3000

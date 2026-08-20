@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.venv311/
+backend/ .venv311/
+
+# Environment files
+.env
+**/.env
+**/.env.*
+!**/.env.example
+
+# Node
+node_modules/
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project data
+storage/
+!storage/.gitkeep
+
+# Kubernetes secrets
+bridge/base/app-secrets.yaml
+bridge/overlays/*/app-secrets.yaml

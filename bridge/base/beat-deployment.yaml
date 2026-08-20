@@ -1,0 +1,100 @@
+#! beat-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: beat
+    namespace: faceless-video-app
+    labels:
+        com.docker.compose.project: faceless-video-app
+        com.docker.compose.service: beat
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: faceless-video-app
+            com.docker.compose.service: beat
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: faceless-video-app
+                com.docker.compose.service: beat
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: beat
+                  image: faceless-video-app-beat
+                  imagePullPolicy: IfNotPresent
+                  args:
+                    - celery
+                    - -A
+                    - app.worker.celery_app
+                    - beat
+                    - --loglevel=info
+                  env:
+                    - name: BASE_URL
+                      value: "http://localhost:8000"
+                    - name: DATABASE_URL
+                      value: "postgresql://appuser:apppass@db:5432/facelessapp"
+                    - name: ELEVENLABS_API_KEY
+                      valueFrom:
+                        secretKeyRef:
+                          name: app-secrets
+                          key: elevenlabs-api-key
+                    - name: ELEVENLABS_VOICE_ID
+                      value: "rPMkKgdwgIwqv4fXgR6N"
+                    - name: META_APP_ID
+                      value: ""
+                    - name: META_APP_SECRET
+                      value: ""
+                    - name: META_REDIRECT_URI
+                      value: "http://localhost:8000/api/social/meta/callback"
+                    - name: OPENAI_API_KEY
+                      valueFrom:
+                        secretKeyRef:
+                          name: app-secrets
+                          key: openai-api-key
+                    - name: PEXELS_API_KEY
+                      valueFrom:
+                        secretKeyRef:
+                          name: app-secrets
+                          key: pexels-api-key
+                    - name: REDIS_URL
+                      value: "redis://redis:6379/0"
+                    - name: SECRET_KEY
+                      valueFrom:
+                        secretKeyRef:
+                          name: app-secrets
+                          key: secret-key
+                    - name: STORAGE_PATH
+                      value: "/app/storage/videos"
+                    - name: TIKTOK_CLIENT_KEY
+                      value: ""
+                    - name: TIKTOK_CLIENT_SECRET
+                      value: ""
+                    - name: TIKTOK_REDIRECT_URI
+                      value: "http://localhost:8000/api/social/tiktok/callback"
+                    - name: YOUTUBE_CLIENT_ID
+                      valueFrom:
+                        secretKeyRef:
+                          name: app-secrets
+                          key: youtube-client-id
+                    - name: YOUTUBE_CLIENT_SECRET
+                      valueFrom:
+                        secretKeyRef:
+                          name: app-secrets
+                          key: youtube-client-secret
+                    - name: YOUTUBE_REDIRECT_URI
+                      value: "http://localhost:8000/api/social/youtube/callback"
+                  ports:
+                    - name: beat-8000
+                      containerPort: 8000
+                  volumeMounts:
+                    - name: app-storage
+                      mountPath: /app/storage
+            volumes:
+                - name: app-storage
+                  persistentVolumeClaim:
+                    claimName: beat-storage-vol

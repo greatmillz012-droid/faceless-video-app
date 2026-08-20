@@ -1,0 +1,9 @@
+#! worker-storage-vol-persistentVolumeClaim.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: worker-storage-vol
+    namespace: faceless-video-app
+spec:
+    storageClassName: "hostpath" # see docker/desktop-storage-provisioner
