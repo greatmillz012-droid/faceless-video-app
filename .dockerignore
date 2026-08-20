@@ -1,0 +1,9 @@
+node_modules
+__pycache__
+.git
+.env
+.env.local
+.gitignore
+*.pyc
+.DS_Store
+.next
