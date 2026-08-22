@@ -18,6 +18,7 @@ class User(Base):
     settings = relationship("UserSettings", back_populates="user", uselist=False)
     social_accounts = relationship("SocialAccount", back_populates="user")
     videos = relationship("Video", back_populates="user")
+    preferences = relationship("UserPreferences", back_populates="user", uselist=False)
 
 
 class UserSettings(Base):
@@ -33,6 +34,20 @@ class UserSettings(Base):
     auto_post_enabled = Column(Boolean, default=False)
 
     user = relationship("User", back_populates="settings")
+
+
+class UserPreferences(Base):
+    __tablename__ = "user_preferences"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True)
+    daily_videos = Column(Integer, default=1)
+    post_times = Column(JSON, default=[])
+    voice_effect = Column(String, default="natural")
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    user = relationship("User", back_populates="preferences")
 
 
 class SocialPlatform(str, enum.Enum):

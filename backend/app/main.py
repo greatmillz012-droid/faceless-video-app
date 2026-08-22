@@ -1,7 +1,9 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from .config import settings
@@ -9,6 +11,12 @@ from .database import Base, engine
 from .routers import auth, settings as settings_router, social_connect, videos
 
 app = FastAPI(title="Faceless Video Automation")
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    return JSONResponse(status_code=400, content={"detail": exc.errors()})
+
 
 try:
     Base.metadata.create_all(bind=engine)

@@ -48,3 +48,12 @@ def login(payload: LoginIn, db: Session = Depends(get_db)):
 
     token = auth.create_access_token({"sub": user.email})
     return {"access_token": token, "token_type": "bearer"}
+
+
+@router.get("/me")
+def get_me(user: models.User = Depends(auth.get_current_user)):
+    return {
+        "id": user.id,
+        "email": user.email,
+        "created_at": user.created_at,
+    }
