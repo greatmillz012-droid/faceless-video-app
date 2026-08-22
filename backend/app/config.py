@@ -31,6 +31,11 @@ class Settings(BaseSettings):
     STORAGE_PATH: str = "/app/storage/videos"
     BASE_URL: str = _get_base_url()
 
+    # Comma-separated list of allowed CORS origins. Defaults to common local
+    # development origins; production deployments should override this via
+    # the CORS_ORIGINS environment variable with the frontend's domain(s).
+    CORS_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
+
     OPENAI_API_KEY: str = ""
     ELEVENLABS_API_KEY: str = ""
     ELEVENLABS_VOICE_ID: str = ""
