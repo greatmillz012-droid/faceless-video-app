@@ -1,0 +1,368 @@
+ Image faceless-video-app-backend Building 
+ Image faceless-video-app-worker Building 
+ Image faceless-video-app-beat Building 
+ Image faceless-video-app-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.02kB
+#1 reading from stdin 2.01kB 0.2s done
+#1 DONE 0.7s
+
+#2 [worker internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 627B 0.1s done
+#2 ...
+
+#3 [frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 256B 0.5s done
+#3 DONE 0.8s
+
+#2 [backend internal] load build definition from Dockerfile
+#2 DONE 1.0s
+
+#4 [frontend internal] load metadata for docker.io/library/node:20-alpine
+#4 ...
+
+#5 [auth] library/node:pull token for registry-1.docker.io
+#5 DONE 0.0s
+
+#6 [auth] library/python:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [backend internal] load metadata for docker.io/library/python:3.11-slim
+#7 ...
+
+#4 [frontend internal] load metadata for docker.io/library/node:20-alpine
+#4 DONE 5.2s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 32B 0.1s
+#8 ...
+
+#7 [beat internal] load metadata for docker.io/library/python:3.11-slim
+#7 DONE 5.3s
+
+#8 [frontend internal] load .dockerignore
+#8 transferring context: 136B 0.2s done
+#8 DONE 0.4s
+
+#9 [backend internal] load .dockerignore
+#9 transferring context: 206B 0.1s done
+#9 transferring context: 206B 0.1s done
+#9 DONE 0.6s
+
+#10 [frontend internal] load build context
+#10 DONE 0.0s
+
+#11 [frontend 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#11 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#11 ...
+
+#12 [beat internal] load build context
+#12 DONE 0.0s
+
+#11 [frontend 1/6] FROM docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293
+#11 resolve docker.io/library/node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 0.5s done
+#11 DONE 0.6s
+
+#10 [frontend internal] load build context
+#10 transferring context: 646B 0.2s done
+#10 DONE 0.4s
+
+#13 [worker builder 1/5] FROM docker.io/library/python:3.11-slim@sha256:9c900dea9e8fb7e16277c179b555cc72d29a352dbc33cff48ad5a0412fd5bfc7
+#13 resolve docker.io/library/python:3.11-slim@sha256:9c900dea9e8fb7e16277c179b555cc72d29a352dbc33cff48ad5a0412fd5bfc7 0.5s done
+#13 DONE 0.6s
+
+#12 [backend internal] load build context
+#12 ...
+
+#14 [frontend 3/6] COPY package.json package-lock.json* ./
+#14 CACHED
+
+#15 [frontend 4/6] RUN npm install
+#15 CACHED
+
+#16 [frontend 5/6] COPY . .
+#16 CACHED
+
+#17 [frontend 2/6] WORKDIR /app
+#17 CACHED
+
+#18 [frontend 6/6] RUN npm run build
+#18 CACHED
+
+#12 [beat internal] load build context
+#12 transferring context: 450.20kB 4.8s
+#12 ...
+
+#19 [frontend] exporting to image
+#19 exporting layers 0.1s done
+#19 exporting manifest sha256:ef7b7c11e7bc6bd599bb109a82a1d7c6e0e6bd865cf837ac706eb5e815ba5d50 0.1s done
+#19 exporting config sha256:08723efd4f606de8e39b91a7624988e10aec495740271ef03ed2e5cf03f1a3b6 0.1s done
+#19 exporting attestation manifest sha256:c1aa450f62e24d5b92dc7b8d214bc37bb674af96f3c4341ff367652b3b61c00b 1.2s done
+#19 exporting manifest list sha256:aec2af8e7b9ec780f124ed3b1ba89d90e66250b954059611f568e49a12dfa2a2 0.5s done
+#19 naming to docker.io/library/faceless-video-app-frontend:latest 0.1s done
+#19 unpacking to docker.io/library/faceless-video-app-frontend:latest 0.7s done
+#19 DONE 5.4s
+
+#12 [beat internal] load build context
+#12 transferring context: 1.34MB 9.8s
+#12 transferring context: 3.26MB 15.1s
+#12 ...
+
+#20 [frontend] resolving provenance for metadata file
+#20 DONE 3.5s
+
+#12 [beat internal] load build context
+#12 transferring context: 5.52MB 20.1s
+#12 transferring context: 9.28MB 25.1s
+#12 transferring context: 13.10MB 30.3s
+#12 transferring context: 16.36MB 35.4s
+#12 transferring context: 18.64MB 40.7s
+#12 transferring context: 21.77MB 45.8s
+#12 transferring context: 25.26MB 50.8s
+#12 transferring context: 29.39MB 55.9s
+#12 transferring context: 34.26MB 61.1s
+#12 transferring context: 38.78MB 66.1s
+#12 transferring context: 41.96MB 71.2s
+#12 transferring context: 45.18MB 76.3s
+#12 transferring context: 47.35MB 81.4s
+#12 transferring context: 49.90MB 86.5s
+#12 transferring context: 51.72MB 91.8s
+#12 transferring context: 53.02MB 96.9s
+#12 transferring context: 54.97MB 101.9s
+#12 transferring context: 56.50MB 106.9s
+#12 transferring context: 57.38MB 112.3s
+#12 transferring context: 60.60MB 117.4s
+#12 transferring context: 62.67MB 122.4s
+#12 transferring context: 65.51MB 127.4s
+#12 transferring context: 68.72MB 132.6s
+#12 transferring context: 72.00MB 137.8s
+#12 transferring context: 75.29MB 142.9s
+#12 transferring context: 78.98MB 147.9s
+#12 transferring context: 82.29MB 153.0s
+#12 transferring context: 85.77MB 158.2s
+#12 transferring context: 89.88MB 163.3s
+#12 transferring context: 93.69MB 168.3s
+#12 transferring context: 96.16MB 173.3s
+#12 transferring context: 99.39MB 178.5s
+#12 transferring context: 102.70MB 183.5s
+#12 transferring context: 105.10MB 188.6s
+#12 transferring context: 107.47MB 193.7s
+#12 transferring context: 109.53MB 198.8s
+#12 transferring context: 110.66MB 204.0s
+#12 transferring context: 112.46MB 209.1s
+#12 transferring context: 115.22MB 214.3s
+#12 transferring context: 118.65MB 219.3s
+#12 transferring context: 120.58MB 224.8s
+#12 transferring context: 121.74MB 229.9s
+#12 transferring context: 125.26MB 235.0s
+#12 transferring context: 128.87MB 240.1s
+#12 transferring context: 132.27MB 245.2s
+#12 transferring context: 135.86MB 250.2s
+#12 transferring context: 140.56MB 255.3s
+#12 transferring context: 143.59MB 260.4s
+#12 transferring context: 145.94MB 265.6s
+#12 transferring context: 148.70MB 270.6s
+#12 transferring context: 151.28MB 275.6s
+#12 transferring context: 154.38MB 280.9s
+#12 transferring context: 156.11MB 285.9s
+#12 transferring context: 159.53MB 291.0s
+#12 transferring context: 162.81MB 296.0s
+#12 transferring context: 165.64MB 301.2s
+#12 transferring context: 168.55MB 306.2s
+#12 transferring context: 172.66MB 311.2s
+#12 transferring context: 176.19MB 316.3s
+#12 transferring context: 179.41MB 321.4s
+#12 transferring context: 183.16MB 326.5s
+#12 transferring context: 186.89MB 331.5s
+#12 transferring context: 188.47MB 336.7s
+#12 transferring context: 190.77MB 341.8s
+#12 transferring context: 193.24MB 346.9s
+#12 transferring context: 196.65MB 352.1s
+#12 transferring context: 199.83MB 357.2s
+#12 transferring context: 203.24MB 362.3s
+#12 transferring context: 207.18MB 367.3s
+#12 transferring context: 210.63MB 372.3s
+#12 transferring context: 214.33MB 377.5s
+#12 transferring context: 217.75MB 382.6s
+#12 transferring context: 221.40MB 387.7s
+#12 transferring context: 225.42MB 393.0s
+#12 transferring context: 228.74MB 398.0s
+#12 transferring context: 232.53MB 403.0s
+#12 transferring context: 236.52MB 408.0s
+#12 transferring context: 239.92MB 413.1s
+#12 transferring context: 243.76MB 418.1s
+#12 transferring context: 246.64MB 423.2s
+#12 transferring context: 249.74MB 428.3s
+#12 transferring context: 253.28MB 433.4s
+#12 transferring context: 256.00MB 438.4s
+#12 transferring context: 258.93MB 443.4s
+#12 transferring context: 261.14MB 448.5s
+#12 transferring context: 264.83MB 453.6s
+#12 transferring context: 268.53MB 458.8s
+#12 transferring context: 271.89MB 463.9s
+#12 transferring context: 274.90MB 468.9s
+#12 transferring context: 277.34MB 474.0s
+#12 transferring context: 281.77MB 479.0s
+#12 transferring context: 285.61MB 484.2s
+#12 transferring context: 287.29MB 489.3s
+#12 transferring context: 290.60MB 494.4s
+#12 transferring context: 294.73MB 499.5s
+#12 transferring context: 297.82MB 504.6s
+#12 transferring context: 300.81MB 509.6s
+#12 transferring context: 304.23MB 514.6s
+#12 transferring context: 308.27MB 519.6s
+#12 transferring context: 311.52MB 524.7s
+#12 transferring context: 315.04MB 529.7s
+#12 transferring context: 318.40MB 534.9s
+#12 transferring context: 322.96MB 539.9s
+#12 transferring context: 327.04MB 545.0s
+#12 transferring context: 330.37MB 550.1s
+#12 transferring context: 333.93MB 555.3s
+#12 transferring context: 338.05MB 560.4s
+#12 transferring context: 341.62MB 565.4s
+#12 transferring context: 344.57MB 570.7s
+#12 transferring context: 347.21MB 575.8s
+#12 transferring context: 349.68MB 580.9s
+#12 transferring context: 351.63MB 586.0s
+#12 transferring context: 355.13MB 591.0s
+#12 transferring context: 358.53MB 596.0s
+#12 transferring context: 361.50MB 601.1s
+#12 transferring context: 365.06MB 606.2s
+#12 transferring context: 369.56MB 611.3s
+#12 transferring context: 373.11MB 616.3s
+#12 transferring context: 376.48MB 621.4s
+#12 transferring context: 379.16MB 626.5s
+#12 transferring context: 382.65MB 631.6s
+#12 transferring context: 386.27MB 636.7s
+#12 transferring context: 390.07MB 641.7s
+#12 transferring context: 393.49MB 646.8s
+#12 transferring context: 397.11MB 652.0s
+#12 transferring context: 400.79MB 657.1s
+#12 transferring context: 404.29MB 662.1s
+#12 transferring context: 407.84MB 667.1s
+#12 transferring context: 411.14MB 672.4s
+#12 transferring context: 414.13MB 677.4s
+#12 transferring context: 417.25MB 682.5s
+#12 transferring context: 419.96MB 687.5s
+#12 transferring context: 423.26MB 692.5s
+#12 transferring context: 426.61MB 697.5s
+#12 transferring context: 430.89MB 702.6s
+#12 transferring context: 433.78MB 707.7s
+#12 transferring context: 435.98MB 712.9s
+#12 transferring context: 438.72MB 718.0s
+#12 transferring context: 441.69MB 723.0s
+#12 transferring context: 444.13MB 728.0s
+#12 transferring context: 447.17MB 733.2s
+#12 transferring context: 450.35MB 738.2s
+#12 transferring context: 453.21MB 743.4s
+#12 transferring context: 455.91MB 748.5s
+#12 transferring context: 459.38MB 753.6s
+#12 transferring context: 462.64MB 758.8s
+#12 transferring context: 466.01MB 764.1s
+#12 transferring context: 469.56MB 769.1s
+#12 transferring context: 473.94MB 774.2s
+#12 transferring context: 477.32MB 779.2s
+#12 transferring context: 480.41MB 784.3s
+#12 transferring context: 483.52MB 789.5s
+#12 transferring context: 487.14MB 794.5s
+#12 transferring context: 491.13MB 799.5s
+#12 transferring context: 494.21MB 804.5s
+#12 transferring context: 497.75MB 809.7s
+#12 transferring context: 502.16MB 814.8s
+#12 transferring context: 505.38MB 819.9s
+#12 transferring context: 508.58MB 824.9s
+#12 transferring context: 512.12MB 829.9s
+#12 transferring context: 516.63MB 835.0s
+#12 transferring context: 520.00MB 840.2s
+#12 transferring context: 522.78MB 845.3s
+#12 transferring context: 524.15MB 850.5s
+#12 transferring context: 526.86MB 855.7s
+#12 transferring context: 529.39MB 860.8s
+#12 transferring context: 531.90MB 865.8s
+#12 transferring context: 534.83MB 870.9s
+#12 transferring context: 536.53MB 876.0s
+#12 transferring context: 538.36MB 881.1s
+#12 transferring context: 540.02MB 886.1s
+#12 transferring context: 542.17MB 891.2s
+#12 transferring context: 545.43MB 896.4s
+#12 transferring context: 547.87MB 901.5s
+#12 transferring context: 551.04MB 906.6s
+#12 transferring context: 553.50MB 911.7s
+#12 transferring context: 556.39MB 916.9s
+#12 transferring context: 559.34MB 922.0s
+#12 transferring context: 562.33MB 927.1s
+#12 transferring context: 566.07MB 932.2s
+#12 transferring context: 569.56MB 937.3s
+#12 transferring context: 572.78MB 942.3s
+#12 transferring context: 575.94MB 947.4s
+#12 transferring context: 579.89MB 952.5s
+#12 transferring context: 582.99MB 957.6s
+#12 transferring context: 586.06MB 962.6s
+#12 transferring context: 589.15MB 967.7s
+#12 transferring context: 593.12MB 972.8s
+#12 transferring context: 596.65MB 978.0s
+#12 transferring context: 599.89MB 983.2s
+#12 transferring context: 603.92MB 988.4s
+#12 transferring context: 606.76MB 993.5s
+#12 transferring context: 608.52MB 998.5s
+#12 transferring context: 612.27MB 1003.7s
+#12 transferring context: 615.84MB 1008.7s
+#12 transferring context: 617.92MB 1013.9s
+#12 transferring context: 621.48MB 1018.9s
+#12 transferring context: 624.09MB 1024.1s
+#12 transferring context: 626.72MB 1029.2s
+#12 transferring context: 629.74MB 1034.2s
+#12 transferring context: 632.49MB 1039.3s
+#12 transferring context: 634.46MB 1044.4s
+#12 transferring context: 637.62MB 1049.6s
+#12 transferring context: 639.80MB 1054.6s
+#12 transferring context: 639.81MB 1056.1s done
+#12 DONE 1057.2s
+
+#21 [beat stage-1 3/6] WORKDIR /app
+#21 CACHED
+
+#22 [beat builder 2/5] RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     && rm -rf /var/lib/apt/lists/*
+#22 CACHED
+
+#23 [beat builder 3/5] WORKDIR /app
+#23 CACHED
+
+#24 [beat builder 4/5] COPY requirements.txt .
+#24 CACHED
+
+#25 [beat builder 5/5] RUN pip install --user --no-cache-dir --no-warn-script-location -r requirements.txt
+#25 CACHED
+
+#26 [beat stage-1 2/6] RUN apt-get update && apt-get install -y --no-install-recommends     curl     ffmpeg     git     && rm -rf /var/lib/apt/lists/*
+#26 CACHED
+
+#27 [beat stage-1 4/6] COPY --from=builder /root/.local /root/.local
+#27 CACHED
+
+#21 [worker stage-1 3/6] WORKDIR /app
+#21 CACHED
+
+#23 [worker builder 3/5] WORKDIR /app
+#23 CACHED
+
+#26 [worker stage-1 2/6] RUN apt-get update && apt-get install -y --no-install-recommends     curl     ffmpeg     git     && rm -rf /var/lib/apt/lists/*
+#26 CACHED
+
+#22 [worker builder 2/5] RUN apt-get update && apt-get install -y --no-install-recommends     build-essential     && rm -rf /var/lib/apt/lists/*
+#22 CACHED
+
+#24 [worker builder 4/5] COPY requirements.txt .
+#24 CACHED
+
+#25 [worker builder 5/5] RUN pip install --user --no-cache-dir --no-warn-script-location -r requirements.txt
+#25 CACHED
+
+#28 [backend stage-1 5/6] COPY . .
+target beat: failed to receive status: rpc error: code = Unavailable desc = error reading from server: EOF
+
+
+
+View build details: docker-desktop://dashboard/build/default/default/1k8c3q9948tk2ujpwvgv0yoab
+
