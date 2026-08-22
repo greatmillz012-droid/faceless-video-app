@@ -13,11 +13,12 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.utcnow())
 
     settings = relationship("UserSettings", back_populates="user", uselist=False)
     social_accounts = relationship("SocialAccount", back_populates="user")
     videos = relationship("Video", back_populates="user")
+    preferences = relationship("UserPreferences", back_populates="user", uselist=False)
 
 
 class UserSettings(Base):
@@ -33,6 +34,20 @@ class UserSettings(Base):
     auto_post_enabled = Column(Boolean, default=False)
 
     user = relationship("User", back_populates="settings")
+
+
+class UserPreferences(Base):
+    __tablename__ = "user_preferences"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True)
+    daily_videos = Column(Integer, default=1)
+    post_times = Column(JSON, default=[])
+    voice_effect = Column(String, default="natural")
+    created_at = Column(DateTime, default=lambda: datetime.utcnow())
+    updated_at = Column(DateTime, default=lambda: datetime.utcnow(), onupdate=lambda: datetime.utcnow())
+
+    user = relationship("User", back_populates="preferences")
 
 
 class SocialPlatform(str, enum.Enum):
@@ -53,7 +68,7 @@ class SocialAccount(Base):
     refresh_token = Column(Text, nullable=True)
     token_expires_at = Column(DateTime, nullable=True)
     extra_data = Column(JSON, default={})
-    connected_at = Column(DateTime, default=datetime.utcnow)
+    connected_at = Column(DateTime, default=lambda: datetime.utcnow())
 
     user = relationship("User", back_populates="social_accounts")
 
@@ -76,7 +91,7 @@ class Video(Base):
     file_path = Column(String, nullable=True)
     status = Column(Enum(VideoStatus), default=VideoStatus.queued)
     scheduled_for = Column(DateTime, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.utcnow())
     post_results = Column(JSON, default={})
 
     user = relationship("User", back_populates="videos")
