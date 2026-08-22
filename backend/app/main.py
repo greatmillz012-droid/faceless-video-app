@@ -15,9 +15,31 @@ try:
 except Exception as e:
     print(f"Warning: Could not create database tables on startup: {e}")
 
+
+def _get_cors_origins() -> list[str]:
+    """Parse the CORS_ORIGINS setting into a list of origins.
+
+    CORS_ORIGINS is expected to be a comma-separated string, e.g.
+    "https://frontend-domain.com,http://localhost:3000". Whitespace around
+    each origin is stripped and empty entries are dropped. Localhost origins
+    are always included as a fallback so local development keeps working
+    even if CORS_ORIGINS is overridden without them.
+    """
+    raw_origins = settings.CORS_ORIGINS or ""
+    origins = [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
+
+    dev_fallbacks = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    for fallback in dev_fallbacks:
+        if fallback not in origins:
+            origins.append(fallback)
+
+    return origins
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_get_cors_origins(),
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
