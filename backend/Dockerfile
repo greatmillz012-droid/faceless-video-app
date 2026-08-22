@@ -1,26 +1,19 @@
-FROM python:3.11-slim as builder
+# Build frontend
+FROM node:18-alpine AS frontend-builder
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm ci
+COPY frontend .
+RUN npm run build
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --user --no-cache-dir --no-warn-script-location -r requirements.txt
-
+# Build backend
 FROM python:3.11-slim
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    ffmpeg \
-    git \
-    && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY backend ./
 
-COPY . .
-RUN mkdir -p /app/storage/videos
+# Copy frontend build output (Next.js .next directory)
+COPY --from=frontend-builder /app/frontend/.next /app/frontend/.next
 
-EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
