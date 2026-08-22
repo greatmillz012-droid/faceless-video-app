@@ -14,7 +14,7 @@ if IS_DEV or not REDIS_URL or REDIS_URL.startswith("redis://localhost"):
     try:
         import redis
         # Try to connect to Redis - if it fails, use synchronous mode
-        r = redis.from_url(REDIS_CONNECTION_URL, socket_connect_timeout=1)
+        r = redis.from_url(REDIS_CONNECTION_URL, socket_connect_timeout=5)
         r.ping()
         broker_url = REDIS_CONNECTION_URL
         backend_url = REDIS_CONNECTION_URL
@@ -34,7 +34,7 @@ celery_app.conf.update(
     timezone="UTC",
     task_always_eager=broker_url.startswith("memory://"),
     task_eager_propagates=True,
-    broker_connection_retry_on_startup=False,
+    broker_connection_retry_on_startup=True,
 )
 
 from . import beat_schedule, pipeline, scheduler  # noqa: E402,F401
