@@ -90,6 +90,15 @@ export default function LoginPage() {
         <div className="mt-6 rounded-xl border border-slate-700 bg-slate-950/60 p-4 text-sm text-slate-300">
           {status}
         </div>
+
+        <div className="mt-4 text-center">
+          <Link
+            href="/privacy-policy"
+            className="text-xs font-medium text-slate-400 underline-offset-4 transition hover:text-cyan-400 hover:underline"
+          >
+            Privacy Policy
+          </Link>
+        </div>
       </div>
     </main>
   );
