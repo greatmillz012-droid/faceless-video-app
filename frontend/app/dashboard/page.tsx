@@ -151,7 +151,7 @@ export default function DashboardPage() {
             {settings && <form onSubmit={saveSettings} className="mt-6 space-y-4">
               <label className="field-label">Niche<input className="field-input" value={settings.niche} onChange={(event) => setSettings({ ...settings, niche: event.target.value })} /></label>
               <div className="grid gap-4 sm:grid-cols-2">
-                <label className="field-label">Videos per day<input className="field-input" type="number" min="1" max="3" value={settings.posts_per_day} onChange={(event) => setSettings({ ...settings, posts_per_day: Number(event.target.value) })} /></label>
+                <label className="field-label">Videos per day<input className="field-input" type="number" min="1" max="10" value={settings.posts_per_day} onChange={(event) => setSettings({ ...settings, posts_per_day: Number(event.target.value) })} /></label>
                 <label className="field-label">Video length<input className="field-input" type="number" min="30" max="90" value={settings.video_length_seconds} onChange={(event) => setSettings({ ...settings, video_length_seconds: Number(event.target.value) })} /></label>
               </div>
               <label className="field-label">Posting times<input className="field-input" placeholder="09:00,13:00,18:00" value={settings.posting_times} onChange={(event) => setSettings({ ...settings, posting_times: event.target.value })} /></label>
